@@ -400,6 +400,32 @@ public class Gui extends JFrame {
 									String endTime = endWork.substring(11, 16);
 								   
 								   anwserfield.setText("Go home at " + endTime +" " );
+						   	
+						   	}else if (stemp1.length() == 1 && Integer.parseInt(stemp1.substring(0,0)) <= 10){
+					   			
+					   			stemp1 = "0" + stemp1 + ":00";
+					   			Calendar cal = Calendar.getInstance(); 
+								Date startTime = dateFormat.parse(startDate + " " +stemp1);
+								cal.setTime(startTime);
+								cal.add(Calendar.MINUTE, workTime + breakTime);
+								String endWork = dateFormat.format(cal.getTime());
+								String endTime = endWork.substring(11, 16);
+							   
+							   anwserfield.setText("Go home at " + endTime +" " );
+							  
+						   	}else if (stemp1.length() == 2 && Integer.parseInt(stemp1.substring(0,1)) <= 24){
+					   			
+					   			stemp1 = stemp1 + ":00";	
+					   			Calendar cal = Calendar.getInstance(); 
+								Date startTime = dateFormat.parse(startDate + " " +stemp1);
+								cal.setTime(startTime);
+								cal.add(Calendar.MINUTE, workTime + breakTime);
+								String endWork = dateFormat.format(cal.getTime());
+								String endTime = endWork.substring(11, 16);
+							   
+							   anwserfield.setText("Go home at " + endTime +" " );
+							  
+					   			
 						   	}else{
 						   			anwserfield.setText("That time looks wrong.");
 						   		}
@@ -413,3 +439,6 @@ public class Gui extends JFrame {
 		}
 	}
 
+
+				
+	
