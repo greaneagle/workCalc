@@ -19,6 +19,7 @@ public class Gui extends JFrame {
 	private String startTime;
 	private String endDate;
 	private String startDate;
+	private Boolean gotAnwser = false;
 	private JTextField tippsField;
 	private String tippsString = "Input end time or start time in format hh:mm";
 	private JTextField tippsField2;
@@ -117,54 +118,87 @@ public class Gui extends JFrame {
 			JButton src = (JButton) event.getSource();
 			
 			if(src.equals(one)){
+				if(gotAnwser){
+					gotAnwser = false;
+					stemp1 = "1";
+				}else{
 						stemp1 = anwserfield.getText() + "1";
-					
 				}
-			
-			if(src.equals(two)){
-						stemp1 = anwserfield.getText() + "2";
-					
-				}
-			if(src.equals(three)){
-						stemp1 = anwserfield.getText() + "3";
-					
-				}
-			
-			if(src.equals(four)){
-						stemp1 = anwserfield.getText() + "4";
-					
-				}
-			
-			if(src.equals(five)){
-						stemp1 = anwserfield.getText() + "5";
-					
-				}
-			
-			if(src.equals(six)){
-						stemp1 = anwserfield.getText() + "6";
-					
-				}
-			
-			if(src.equals(seven)){
-						stemp1 = anwserfield.getText() + "7";
-				
 			}
-			
-			if(src.equals(eight)){
-						stemp1 = anwserfield.getText() + "8";
-					
+			if(src.equals(two)){
+				if(gotAnwser){
+					gotAnwser = false;
+					stemp1 = "2";
+				}else{
+						stemp1 = anwserfield.getText() + "2";
 				}
+			}
+			if(src.equals(three)){
+				if(gotAnwser){
+					gotAnwser = false;
+					stemp1 = "3";
+				}else{
+						stemp1 = anwserfield.getText() + "3";	
+				}
+			}
+			if(src.equals(four)){
+				if(gotAnwser){
+					gotAnwser = false;
+					stemp1 = "4";
+				}else{
+						stemp1 = anwserfield.getText() + "4";
+				}
+			}
+			if(src.equals(five)){
+				if(gotAnwser){
+					gotAnwser = false;
+					stemp1 = "5";
+				}else{
+						stemp1 = anwserfield.getText() + "5";
+				}
+			}
+			if(src.equals(six)){
+				if(gotAnwser){
+					gotAnwser = false;
+					stemp1 = "6";
+				}else{
+						stemp1 = anwserfield.getText() + "6";	
+				}
+			}
+			if(src.equals(seven)){
+				if(gotAnwser){
+					gotAnwser = false;
+					stemp1 = "7";
+				}else{
+						stemp1 = anwserfield.getText() + "7";
+				}
+			}
+			if(src.equals(eight)){
+				if(gotAnwser){
+					gotAnwser = false;
+					stemp1 = "8";
+				}else{
+						stemp1 = anwserfield.getText() + "8";	
+				}
+			}
 			
 			
 			if(src.equals(nine)){
-						stemp1 = anwserfield.getText() + "9";
-					
-			}
-			
-			if(src.equals(zero)){
-						stemp1 = anwserfield.getText() + "0";
-		
+				if(gotAnwser){
+					gotAnwser = false;
+					stemp1 = "9";
+				}else{
+						stemp1 = anwserfield.getText() + "9";	
 				}
+			}
+			if(src.equals(zero)){
+				if(gotAnwser){
+					gotAnwser = false;
+					stemp1 = "1";
+				}else{
+						stemp1 = anwserfield.getText() + "0";
+				}
+			}
 			
 			
 			if(src.equals(colon)){
@@ -172,6 +206,7 @@ public class Gui extends JFrame {
 					
 				}
 			if(src.equals(clearBtn)){
+					gotAnwser = false;
 					stemp1 = "";
 					anwserfield.setText("");
 				
@@ -288,6 +323,3 @@ public class Gui extends JFrame {
 
 				
 			
-
-
-	
