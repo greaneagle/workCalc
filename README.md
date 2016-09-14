@@ -1,5 +1,7 @@
 # workCalc
 
+V 1.31 Minor fixes of version 1.3
+
 V 1.3 Added some extra checkers to allow for some data entery mistakes.
         For instance if you enter 16 it will now automaticaly be treated as if you enterd 16:00 , or if you enter 8 it will be treated as 08:00.
 
