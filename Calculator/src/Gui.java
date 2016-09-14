@@ -257,7 +257,7 @@ public class Gui extends JFrame {
 										anwserfield.setText("You will work for " + Integer.toString(resoult) + " minutes.");
 									}
 									
-							 }else if (stemp1.length() == 1 && Integer.parseInt(stemp1.substring(0,0)) <= 10){
+							 }else if (stemp1.length() == 1 && Integer.parseInt(stemp1.substring(0,1)) <= 10){
 						   			
 						   			stemp1 = "0" + stemp1 + ":00";
 						   			Date calcFinishDate = dateFormat.parse(endDate + " " + stemp1);
@@ -333,7 +333,7 @@ public class Gui extends JFrame {
 										}else{
 											anwserfield.setText("You will work for " + Integer.toString(resoultNoBreak) + " minutes.");
 										}
-						   }else if (stemp1.length() == 1 && Integer.parseInt(stemp1.substring(0,0)) <= 10){
+						   }else if (stemp1.length() == 1 && Integer.parseInt(stemp1.substring(0,1)) <= 10){
 					   			
 					   			stemp1 = "0" + stemp1 + ":00";
 					   			Date calcFinishDate = dateFormat.parse(endDate + " " + stemp1);
@@ -401,7 +401,7 @@ public class Gui extends JFrame {
 								   
 								   anwserfield.setText("Go home at " + endTime +" " );
 						   	
-						   	}else if (stemp1.length() == 1 && Integer.parseInt(stemp1.substring(0,0)) <= 10){
+						   	}else if (stemp1.length() == 1 && Integer.parseInt(stemp1.substring(0,1)) <= 10){
 					   			
 					   			stemp1 = "0" + stemp1 + ":00";
 					   			Calendar cal = Calendar.getInstance(); 
