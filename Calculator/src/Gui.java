@@ -9,15 +9,18 @@ import java.awt.event.*;
 
 public class Gui extends JFrame {
 	private JTextField anwserfield;
-	private JButton one, two, three, four, five, six, seven, eight, nine, zero, colon, withBreak, noBreak, clearBtn;
+	private JButton one, two, three, four, five, six, seven, eight, nine, zero, colon, withBreak, noBreak, clearBtn, endWork;
 	private String stemp1;
+	private Integer workTime = 480;
+	private Integer breakTime = 30;
 	private JPanel contentPanel;
 	private boolean equalsClicked = false;
 	char operation = ' ';
 	private String startTime;
 	private String endDate;
+	private String startDate;
 	private JTextField tippsField;
-	private String tippsString = "Input end time in format hh:mm";
+	private String tippsString = "Input end time or start time in format hh:mm";
 	private JTextField tippsField2;
 	private String tippsString2 = "Example: 16:00";
 	
@@ -48,6 +51,7 @@ public class Gui extends JFrame {
 		clearBtn = new JButton("Clear");
 		noBreak = new JButton("Without break!");
 		withBreak = new JButton("With break!");
+		endWork = new JButton("When to end work!");
 		
 		Dimension dim = new Dimension(75, 25);
 		
@@ -65,6 +69,7 @@ public class Gui extends JFrame {
 		clearBtn.setPreferredSize(new Dimension (225, 25));
 		noBreak.setPreferredSize(new Dimension (225, 25));
 		withBreak.setPreferredSize(new Dimension (225, 25));
+		endWork.setPreferredSize(new Dimension (225, 25));
 		
 		Numbers n = new Numbers();
 		Calc c = new Calc();
@@ -84,6 +89,7 @@ public class Gui extends JFrame {
 		
 		noBreak.addActionListener(c);
 		withBreak.addActionListener(c);
+		endWork.addActionListener(c);
 		
 		contentPanel = new JPanel();
 		contentPanel.setBackground(Color.GRAY);
@@ -93,6 +99,7 @@ public class Gui extends JFrame {
 		contentPanel.add(one); contentPanel.add(two); contentPanel.add(three); contentPanel.add(four);
 		contentPanel.add(five); contentPanel.add(six); contentPanel.add(seven); contentPanel.add(eight);
 		contentPanel.add(nine); contentPanel.add(zero); contentPanel.add(colon); contentPanel.add(clearBtn); contentPanel.add(noBreak); contentPanel.add(withBreak);
+		contentPanel.add(endWork);
 		contentPanel.add(tippsField, BorderLayout.SOUTH); contentPanel.add(tippsField2, BorderLayout.SOUTH);
 		this.setContentPane(contentPanel);		
 		
@@ -100,9 +107,10 @@ public class Gui extends JFrame {
 		 Calendar cal = Calendar.getInstance();
 		 startTime = dateFormat.format(cal.getTime()).toString();
 		 endDate = startTime.substring(0, 10);
-		   
+		 startDate  =  startTime.substring(0, 10);
 		   
 	}
+
 	
 	private class Numbers implements ActionListener{
 		public void actionPerformed(ActionEvent event){
@@ -190,7 +198,6 @@ public class Gui extends JFrame {
 							   Date calcStartDate = dateFormat.parse(startTime);
 							   long diff = calcFinishDate.getTime() - calcStartDate.getTime();
 							   long diffMinutes = diff / (60 * 1000);
-							   int breakTime = 30;
 								int resoult = (int) (diffMinutes - breakTime);
 								if(resoult <= 0){
 								  anwserfield.setText("Negative work time? Nope...");
@@ -236,6 +243,42 @@ public class Gui extends JFrame {
 					            System.out.println("Exception "+ex);
 					            anwserfield.setText("That time looks wrong.");
 					            
+					        }
+				}
+			
+			
+			if(src.equals(endWork)){
+				stemp1 = anwserfield.getText();
+				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+					try{
+						   if(stemp1.length() == 5 && Integer.parseInt(stemp1.substring(0, 2)) <= 24 && Integer.parseInt(stemp1.substring(3,5)) <= 59) {
+								
+							    Calendar cal = Calendar.getInstance(); 
+								Date startTime = dateFormat.parse(startDate + " " +stemp1);
+								cal.setTime(startTime);
+								cal.add(Calendar.MINUTE, workTime + breakTime);
+								String endWork = dateFormat.format(cal.getTime());
+								String endTime = endWork.substring(11, 16);
+								anwserfield.setText("Go home at " + endTime +" " );
+							   
+						   	}else if (stemp1.length() == 4 && Integer.parseInt(stemp1.substring(2,4)) <= 59){
+						   			
+						   			stemp1 = "0" + stemp1;
+						   			Calendar cal = Calendar.getInstance(); 
+									Date startTime = dateFormat.parse(startDate + " " +stemp1);
+									cal.setTime(startTime);
+									cal.add(Calendar.MINUTE, workTime + breakTime);
+									String endWork = dateFormat.format(cal.getTime());
+									String endTime = endWork.substring(11, 16);
+								   
+								   anwserfield.setText("Go home at " + endTime +" " );
+						   	}else{
+						   			anwserfield.setText("That time looks wrong.");
+						   		}
+						   }
+						   catch (ParseException ex){
+					            System.out.println("Exception "+ex);
+					            anwserfield.setText("That time looks wrong.");      
 					        }
 				}
 			}
