@@ -228,8 +228,8 @@ public class Gui extends JFrame {
 				stemp1 = anwserfield.getText();
 				 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 					try{
-						   Date calcFinishDate = dateFormat.parse(endDate + " " + stemp1);
-						   if(Integer.parseInt(stemp1.substring(0, 2)) <= 24 && Integer.parseInt(stemp1.substring(3,5)) <=60 &&  stemp1.length() == 5){
+						   if(stemp1.length() == 5 && Integer.parseInt(stemp1.substring(0, 2)) <= 24 && Integer.parseInt(stemp1.substring(3,5)) <=60){
+							   Date calcFinishDate = dateFormat.parse(endDate + " " + stemp1);
 							   Date calcStartDate = dateFormat.parse(startTime);
 							   long diff = calcFinishDate.getTime() - calcStartDate.getTime();
 							   long diffMinutes = diff / (60 * 1000);
@@ -241,6 +241,54 @@ public class Gui extends JFrame {
 								}else{
 									anwserfield.setText("You will work for " + Integer.toString(resoult) + " minutes.");
 								}
+							}else if (stemp1.length() == 4 && Integer.parseInt(stemp1.substring(2,4)) <= 59){
+					   			
+					   			stemp1 = "0" + stemp1;
+					   			Date calcFinishDate = dateFormat.parse(endDate + " " + stemp1);
+								   Date calcStartDate = dateFormat.parse(startTime);
+								   long diff = calcFinishDate.getTime() - calcStartDate.getTime();
+								   long diffMinutes = diff / (60 * 1000);
+									int resoult = (int) (diffMinutes - breakTime);
+									if(resoult <= 0){
+									  anwserfield.setText("Negative work time? Nope...");
+									  
+									  
+									}else{
+										anwserfield.setText("You will work for " + Integer.toString(resoult) + " minutes.");
+									}
+									
+							 }else if (stemp1.length() == 1 && Integer.parseInt(stemp1.substring(0,0)) <= 10){
+						   			
+						   			stemp1 = "0" + stemp1 + ":00";
+						   			Date calcFinishDate = dateFormat.parse(endDate + " " + stemp1);
+									   Date calcStartDate = dateFormat.parse(startTime);
+									   long diff = calcFinishDate.getTime() - calcStartDate.getTime();
+									   long diffMinutes = diff / (60 * 1000);
+										int resoult = (int) (diffMinutes - breakTime);
+										if(resoult <= 0){
+										  anwserfield.setText("Negative work time? Nope...");
+										  
+										  
+										}else{
+											anwserfield.setText("You will work for " + Integer.toString(resoult) + " minutes.");
+										}
+										
+							 }else if (stemp1.length() == 2 && Integer.parseInt(stemp1.substring(0,1)) <= 24){
+						   			
+						   			stemp1 = stemp1 + ":00";	
+						   			Date calcFinishDate = dateFormat.parse(endDate + " " + stemp1);
+									   Date calcStartDate = dateFormat.parse(startTime);
+									   long diff = calcFinishDate.getTime() - calcStartDate.getTime();
+									   long diffMinutes = diff / (60 * 1000);
+										int resoult = (int) (diffMinutes - breakTime);
+										if(resoult <= 0){
+										  anwserfield.setText("Negative work time? Nope...");
+										  
+										  
+										}else{
+											anwserfield.setText("You will work for " + Integer.toString(resoult) + " minutes.");
+										}
+										
 						   }else{
 							   anwserfield.setText("That time looks wrong.");
 						   }
@@ -256,9 +304,9 @@ public class Gui extends JFrame {
 				stemp1 = anwserfield.getText();
 				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 					try{
-						   Date calcFinishDate = dateFormat.parse(endDate + " " + stemp1);
-						   if(Integer.parseInt(stemp1.substring(0, 2)) <= 24 && Integer.parseInt(stemp1.substring(3,5)) <= 59 &&  stemp1.length() == 5){
 						   
+						   if(stemp1.length() == 5 && Integer.parseInt(stemp1.substring(0, 2)) <= 24 && Integer.parseInt(stemp1.substring(3,5)) <= 59){
+							   Date calcFinishDate = dateFormat.parse(endDate + " " + stemp1);
 							   Date calcStartDate = dateFormat.parse(startTime);
 							   System.out.println(calcStartDate.toString());
 							   System.out.println(calcFinishDate.toString());
@@ -270,6 +318,51 @@ public class Gui extends JFrame {
 									}else{
 										anwserfield.setText("You will work for " + Integer.toString(resoultNoBreak) + " minutes.");
 									}
+						   }else if (stemp1.length() == 4 && Integer.parseInt(stemp1.substring(2,4)) <= 59){
+					   			
+					   			stemp1 = "0" + stemp1;
+					   			Date calcFinishDate = dateFormat.parse(endDate + " " + stemp1);
+								   Date calcStartDate = dateFormat.parse(startTime);
+								   System.out.println(calcStartDate.toString());
+								   System.out.println(calcFinishDate.toString());
+								   long diff = calcFinishDate.getTime() - calcStartDate.getTime();
+								   long diffMinutes = diff / (60 * 1000);
+									int resoultNoBreak = (int) (diffMinutes);
+										if(resoultNoBreak <=0){
+											anwserfield.setText("Negative work time? Nope...");
+										}else{
+											anwserfield.setText("You will work for " + Integer.toString(resoultNoBreak) + " minutes.");
+										}
+						   }else if (stemp1.length() == 1 && Integer.parseInt(stemp1.substring(0,0)) <= 10){
+					   			
+					   			stemp1 = "0" + stemp1 + ":00";
+					   			Date calcFinishDate = dateFormat.parse(endDate + " " + stemp1);
+								   Date calcStartDate = dateFormat.parse(startTime);
+								   System.out.println(calcStartDate.toString());
+								   System.out.println(calcFinishDate.toString());
+								   long diff = calcFinishDate.getTime() - calcStartDate.getTime();
+								   long diffMinutes = diff / (60 * 1000);
+									int resoultNoBreak = (int) (diffMinutes);
+										if(resoultNoBreak <=0){
+											anwserfield.setText("Negative work time? Nope...");
+										}else{
+											anwserfield.setText("You will work for " + Integer.toString(resoultNoBreak) + " minutes.");
+										}
+						   }else if (stemp1.length() == 2 && Integer.parseInt(stemp1.substring(0,1)) <= 24){
+					   			
+					   			stemp1 = stemp1 + ":00";	
+					   			Date calcFinishDate = dateFormat.parse(endDate + " " + stemp1);
+								   Date calcStartDate = dateFormat.parse(startTime);
+								   System.out.println(calcStartDate.toString());
+								   System.out.println(calcFinishDate.toString());
+								   long diff = calcFinishDate.getTime() - calcStartDate.getTime();
+								   long diffMinutes = diff / (60 * 1000);
+									int resoultNoBreak = (int) (diffMinutes);
+										if(resoultNoBreak <=0){
+											anwserfield.setText("Negative work time? Nope...");
+										}else{
+											anwserfield.setText("You will work for " + Integer.toString(resoultNoBreak) + " minutes.");
+										}
 						   		}else{
 						   			anwserfield.setText("That time looks wrong.");
 						   		}
@@ -320,6 +413,3 @@ public class Gui extends JFrame {
 		}
 	}
 
-
-				
-			
