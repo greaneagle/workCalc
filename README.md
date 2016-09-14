@@ -1,5 +1,8 @@
 # workCalc
 
+V 1.3 Added some extra checkers to allow for some data entery mistakes.
+        For instance if you enter 16 it will now automaticaly be treated as if you enterd 16:00 , or if you enter 8 it will be treated as 08:00.
+
 V 1.2 Added some automatic clearing functions after anwser is recievd
 
 V 1.1 Added the functionality to input work start time and get the end of work time as a result. 
