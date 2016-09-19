@@ -21,7 +21,7 @@ public class Gui extends JFrame {
 	private String startDate;
 	private Boolean gotAnwser = false;
 	private JTextField tippsField;
-	private String tippsString = "Input end time or start time in format hh:mm";
+	private String tippsString = "Input end or start time in format hh:mm";
 	private JTextField tippsField2;
 	private String tippsString2 = "Example: 16:00";
 	
